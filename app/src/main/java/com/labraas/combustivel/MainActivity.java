@@ -24,10 +24,17 @@ public class MainActivity extends AppCompatActivity {
     public void calcularPreco( View view){
         String precoAlcool = editPrecoAlcool.getText().toString();
         String precoGasolina = editPrecoGasolina.getText().toString();
-        boolean resultado = validarCampos(precoAlcool, precoGasolina);
-        if(resultado){
+        boolean camposValidados = validarCampos(precoAlcool, precoGasolina);
+        if(camposValidados){
            Double valorAlcool = Double.parseDouble(precoAlcool);
             Double valorGasolina = Double.parseDouble(precoGasolina);
+            if(valorAlcool / valorGasolina >=0.7){
+                textResultado.setText("É melhor utilizar Gasolina");
+            }else {
+                textResultado.setText("É melhor utilizar Álcool");
+            }
+
+
         }else{
             textResultado.setText("preencha todos os campos!");
         }
@@ -36,13 +43,14 @@ public class MainActivity extends AppCompatActivity {
     }
     public boolean validarCampos (String pAlcool, String pGasolina){
          boolean camposValidados = true;
-         return camposValidados;
+
          if(pAlcool == null || pAlcool.equals("")){
             camposValidados = false;
+
          } else if (pGasolina == null || pGasolina.equals("")){
              camposValidados = false;
          }
-
+             return camposValidados;
     }
 
 }
