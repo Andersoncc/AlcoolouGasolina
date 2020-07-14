@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "421317213774",
+    "firebase_url": "https://calculadoracombustivel-7eb05.firebaseio.com",
+    "project_id": "calculadoracombustivel-7eb05",
+    "storage_bucket": "calculadoracombustivel-7eb05.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:421317213774:android:b1ed76909feb024c8f8d1f",
+        "android_client_info": {
+          "package_name": "com.labraas.combustivel"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "421317213774-56hb9p7b68kchjibqan5k3re30sfnubm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD15oJO_rVtmjswWtBBDbvWZAlvYITVhAA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "421317213774-56hb9p7b68kchjibqan5k3re30sfnubm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
