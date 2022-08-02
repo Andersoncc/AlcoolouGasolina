@@ -1,7 +1,5 @@
 package com.labraas.combustivel;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -11,25 +9,29 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.github.rtoshiro.util.format.SimpleMaskFormatter;
 import com.github.rtoshiro.util.format.text.MaskTextWatcher;
-import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.MobileAds;
 import com.google.android.material.textfield.TextInputEditText;
 
-public class MainActivity extends AppCompatActivity {
+import java.text.DecimalFormat;
+
+public class MediaActivity extends AppCompatActivity {
 
     private AdView adview;
     private InterstitialAd mInterstitialAd;
-    private TextInputEditText editPrecoAlcool, editPrecoGasolina;
+    private TextInputEditText editAutonomia, editPrecoLitro,editValorAbastecido;
     private TextView textResultado;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_por_media);
 
         mInterstitialAd = new InterstitialAd(this);
         mInterstitialAd.setAdUnitId("ca-app-pub-9584107572536485/2112277072");
@@ -41,15 +43,18 @@ public class MainActivity extends AppCompatActivity {
         AdRequest adRequest =  new AdRequest.Builder().build();
         adview.loadAd(adRequest);
 
-        editPrecoAlcool = findViewById(R.id.editAutonomia);
-        editPrecoGasolina = findViewById(R.id.editPrecoLitro);
+        editAutonomia = findViewById(R.id.editAutonomia);
+        editPrecoLitro = findViewById(R.id.editPrecoLitro);
+        editValorAbastecido = findViewById(R.id.editValorAbastecido);
         textResultado = findViewById(R.id.textResultado);
-
-        SimpleMaskFormatter smf = new SimpleMaskFormatter("N.NN");
-        MaskTextWatcher mtwA = new MaskTextWatcher(editPrecoAlcool, smf);
-        MaskTextWatcher mtwG = new MaskTextWatcher(editPrecoGasolina, smf);
-        editPrecoAlcool.addTextChangedListener(mtwA);
-        editPrecoGasolina.addTextChangedListener(mtwG);
+        SimpleMaskFormatter smfi = new SimpleMaskFormatter("NNN.NN");
+        SimpleMaskFormatter smfv = new SimpleMaskFormatter("N.NN");
+        MaskTextWatcher mtwA = new MaskTextWatcher(editAutonomia, smfi);
+        MaskTextWatcher mtwP = new MaskTextWatcher(editPrecoLitro, smfv);
+        MaskTextWatcher mtwV = new MaskTextWatcher(editValorAbastecido, smfi);
+        editAutonomia.addTextChangedListener(mtwA);
+        editPrecoLitro.addTextChangedListener(mtwP);
+        editValorAbastecido.addTextChangedListener(mtwV);
 
 
     }
@@ -62,28 +67,29 @@ public class MainActivity extends AppCompatActivity {
 
     public void calcularPreco( View view){
 
-
-
-        String precoAlcool = editPrecoAlcool.getText().toString();
-        String precoGasolina = editPrecoGasolina.getText().toString();
+        String autonomia = editAutonomia.getText().toString();
+        String preco = editPrecoLitro.getText().toString();
+        String abastecido = editValorAbastecido.getText().toString();
         if (mInterstitialAd.isLoaded()) {
             mInterstitialAd.show();
         } else {
             Log.d("TAG", "The interstitial wasn't loaded yet.");
         }
-        boolean camposValidados = validarCampos(precoAlcool, precoGasolina);
-        if(camposValidados){
+        boolean camposValidados = validarCampos(autonomia, preco,abastecido);
+        if(camposValidados)
+        {
 
-            Double valorAlcool = Double.parseDouble(precoAlcool);
-            Double valorGasolina = Double.parseDouble(precoGasolina);
-            if(valorAlcool / valorGasolina >=0.7){
-                textResultado.setTextColor(Color.parseColor("#ff0000"));
-                textResultado.setText("É melhor utilizar Gasolina");
-            }else {
-                textResultado.setTextColor(Color.parseColor("#2c3d91"));
-                textResultado.setText("É melhor utilizar Álcool");
-            }
+            Double valorAutonomia = Double.parseDouble(autonomia);
+            Double valorPreco = Double.parseDouble(preco);
+            Double valorAbastecido = Double.parseDouble(abastecido);
 
+            Double valorResultado = (valorAbastecido / valorPreco * valorAutonomia);
+            DecimalFormat df = new DecimalFormat("0.00");
+            String valorFormatado = (df.format(valorResultado));
+
+
+            textResultado.setTextColor(Color.parseColor("#ff0000"));
+            textResultado.setText("Você percorrerá "+valorFormatado+" Km") ;
 
         }else{
             textResultado.setText("preencha todos os campos!");
@@ -93,15 +99,17 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-    public boolean validarCampos (String pAlcool, String pGasolina){
+    public boolean validarCampos (String vAutonomia, String vPreco, String vAbastecido){
          boolean camposValidados = true;
 
-         if(pAlcool == null || pAlcool.equals("")){
+         if(vAutonomia == null || vAutonomia.equals("")){
             camposValidados = false;
 
-         } else if (pGasolina == null || pGasolina.equals("")){
+         } else if (vPreco == null || vPreco.equals("")){
              camposValidados = false;
-         }
+         } else if (vAbastecido == null || vAbastecido.equals("")){
+        camposValidados = false;
+    }
              return camposValidados;
     }
 

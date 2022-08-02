@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center_vertical"
+    android:background="#000000"
+    android:paddingTop="60dp"
+    tools:context=".MainActivity">
+    <!--teste banner app:adUnitId="ca-app-pub-3940256099942544/6300978111"-->
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="353dp"
+        android:layout_height="144dp"
+        android:layout_marginTop="16dp"
+        android:adjustViewBounds="false"
+        android:background="#000000"
+        android:contentDescription="ImgLogo"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.551"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/splash" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="360dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="12dp"
+        android:text="Nesta nova versão, você pode optar por duas formas de cálculo. Tipo fixo, através dos preços informados, avalia se preço do etanol é igual ou menor que 70% comparado com o valor da gasolina. Matematicamente essa diferenção é vantajosa independente do consumo do veículo. Já na avaliação por média o cálculo é realizado através da média informada e valor pago pelo litro do combustível, assim o valor apresentado será a quantidade de Km que irá rodar."
+        android:textColor="@color/cardview_light_background"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.573"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView9" />
+
+    <Button
+        android:id="@+id/MediaBtn"
+        android:layout_width="360dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="24dp"
+        android:onClick="media"
+        android:text="Por Média"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/FixoBtn" />
+
+    <Button
+        android:id="@+id/FixoBtn"
+        android:layout_width="360dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="45dp"
+        android:onClick="fixo"
+        android:text="TIPO FIXO"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

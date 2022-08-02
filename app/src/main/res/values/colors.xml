@@ -2,7 +2,8 @@
 <resources>
     <color name="colorPrimary">#2c3d91</color>
     <color name="colorPrimaryDark">#001261</color>
-    <color name="colorAccent">#869ae3</color>
+    <color name="colorAccent">#ffffff</color>
     <color name="gasolina">#ff0000</color>color>
+    <color name="black">#000000</color>color>
     <color name="alcool">#2c3d91</color>color>
 </resources>
