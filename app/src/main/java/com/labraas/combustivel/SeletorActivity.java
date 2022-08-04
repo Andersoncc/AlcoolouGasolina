@@ -21,21 +21,12 @@ import com.google.android.material.textfield.TextInputEditText;
 
 public class SeletorActivity extends AppCompatActivity {
 
-    private AdView adview;
-    private InterstitialAd mInterstitialAd;
     private TextInputEditText editPrecoAlcool, editPrecoGasolina;
-    private TextView textResultado;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_seletor);
-
-
-
-
-
-
     }
     public void fixo(View view){
 

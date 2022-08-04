@@ -30,7 +30,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="32dp"
-        android:text="Neste modo, o cálculo é matemático, independente de consumo.  se o valor do etanol custa 70% ou menos que valor atual da gasolina, a econômia de valores justifica o uso de etanol."
+        android:text="Neste modo, o cálculo é matemático, independente de consumo.  Se o valor do etanol custa 70% ou menos que valor atual da gasolina, a econômia de valores justifica o uso de etanol."
         android:textColor="@color/cardview_light_background"
         android:textSize="15sp"
         app:layout_constraintBottom_toTopOf="@+id/InputAutonomia"
